@@ -1,0 +1,18 @@
+.headerOuter {
+    width: 100vw;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    background-color: grey;
+}
+
+.header {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLink {
+    margin-left: 2rem;
+}

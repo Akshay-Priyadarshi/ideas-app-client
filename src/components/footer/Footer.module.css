@@ -1,0 +1,14 @@
+.footerOuter {
+    width: 100vw;
+    padding: 0.5rem 0;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
