@@ -1,9 +1,8 @@
 .headerOuter {
     width: 100vw;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     display: flex;
     justify-content: center;
-    background-color: grey;
 }
 
 .header {
@@ -13,6 +12,17 @@
     align-items: center;
 }
 
+.logo {
+    width: 4rem;
+}
+
 .navLink {
-    margin-left: 2rem;
+    margin-left: 6rem;
+    color: #08289c;
+}
+
+.circularOutline {
+    border-radius: 2rem;
+    border: 2px solid #08289c;
+    padding: 0.4rem 1rem;
 }

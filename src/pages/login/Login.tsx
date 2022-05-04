@@ -1,5 +1,5 @@
 import React from "react";
-import PageLayout from "../../components/layout/PageLayout";
+import PageLayout from "../../components/page-layout/PageLayout";
 import styles from "./Login.module.css";
 
 const Login = () => {

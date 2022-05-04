@@ -1,17 +1,45 @@
 .hero {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
 }
 
-.heroTitle {
-    font-size: 3rem;
-    font-weight: 200;
-    color: cadetblue;
+.left {
+    width: 50%;
+    height: 100%;
 }
 
-.gif {
-    width: 400px;
-    height: 400px;
+.title {
+    color: #08289c;
+    font-size: 4.5rem;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: 110%;
+    margin-bottom: 4rem;
+}
+
+.subTitle {
+    color: #089c70;
+    font-weight: 400;
+    margin-bottom: 4rem;
+}
+
+.actionBtn {
+    padding: 0.6rem 1rem;
+    border-radius: 2rem;
+    border: 2px solid #08289c;
+    color: #08289c;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: transparent;
+}
+
+.right {
+    width: 50%;
+    height: 100%;
+}
+
+.heroImg {
+    width: 100%;
 }

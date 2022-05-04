@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./PageLayout.module.css";
-import Footer from "../footer/Footer";
-import Header from "../header/Header";
 import { IChildren } from "../../customs/types";
+import Header from "../header/Header";
 
 export interface IPageLayoutProps extends IChildren {}
 
@@ -13,7 +12,6 @@ const PageLayout: React.FunctionComponent<IPageLayoutProps> = ({
         <div className={styles.pageLayout}>
             <Header />
             <div className={styles.pageContent}>{children}</div>
-            <Footer />
         </div>
     );
 };
