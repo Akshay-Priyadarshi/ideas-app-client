@@ -1,4 +1,5 @@
 import React from "react";
+import Counter from "../../components/counter/Counter";
 import PageLayout from "../../components/page-layout/PageLayout";
 import styles from "./Login.module.css";
 
