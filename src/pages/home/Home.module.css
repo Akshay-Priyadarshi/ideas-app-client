@@ -7,7 +7,6 @@
 
 .left {
     width: 50%;
-    height: 100%;
 }
 
 .title {
@@ -42,4 +41,114 @@
 
 .heroImg {
     width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+    .title {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .subTitle {
+        margin-bottom: 2rem;
+    }
+
+    .actionBtn {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .subTitle {
+        margin-bottom: 2rem;
+        font-size: 1rem;
+    }
+
+    .actionBtn {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .subTitle {
+        font-size: 0.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .actionBtn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .left {
+        width: 100%;
+    }
+    .title {
+        font-size: 3.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .subTitle {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+    }
+
+    .actionBtn {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.3rem;
+        margin-bottom: 6rem;
+    }
+    .right {
+        width: 100%;
+    }
+
+    .heroImg {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    /* .left {
+        width: 100%;
+    }
+    .title {
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .subTitle {
+        font-size: 1.2rem;
+        margin-bottom: 4rem;
+    }
+
+    .actionBtn {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.2rem;
+        margin-bottom: 4rem;
+    }
+    .right {
+        width: 100%;
+    }
+
+    .heroImg {
+        width: 100%;
+    } */
 }

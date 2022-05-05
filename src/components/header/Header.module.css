@@ -16,6 +16,11 @@
     width: 4rem;
 }
 
+.navBar {
+    display: flex;
+    align-items: center;
+}
+
 .navLink {
     margin-left: 6rem;
     color: #08289c;
@@ -26,4 +31,57 @@
     border-radius: 2rem;
     border: 2px solid #08289c;
     padding: 0.4rem 1rem;
+}
+
+.menuIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .headerOuter {
+        margin-bottom: 4rem;
+    }
+
+    .logo {
+        width: 3rem;
+    }
+
+    .navLink {
+        margin-left: 4rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .headerOuter {
+        margin-bottom: 3rem;
+    }
+
+    .navBar {
+        display: none;
+    }
+
+    .menuIcon {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .headerOuter {
+        margin-bottom: 2rem;
+    }
+
+    .header {
+        width: 90%;
+    }
+
+    .logo {
+        width: 4rem;
+    }
+
+    .navBar {
+        display: none;
+    }
 }

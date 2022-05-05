@@ -6,6 +6,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none;
+    font-size: 16px;
 }
 
 body::-webkit-scrollbar {
