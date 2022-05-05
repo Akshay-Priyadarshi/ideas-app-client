@@ -1,0 +1,18 @@
+.loginPage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left {
+    width: 35%;
+}
+
+.right {
+    width: 50%;
+}
+
+.loginImg {
+    width: 100%;
+}

@@ -1,0 +1,18 @@
+.signupPage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left {
+    width: 35%;
+}
+
+.right {
+    width: 50%;
+}
+
+.signupImg {
+    width: 100%;
+}

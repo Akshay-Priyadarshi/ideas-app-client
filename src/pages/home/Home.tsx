@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Home.module.css";
 import PageLayout from "../../components/page-layout/PageLayout";
 import heroImg from "../../assets/hero-img.svg";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
     return (
@@ -21,7 +22,9 @@ const Home: React.FC = () => {
                         <br />
                         next multi-dollar ideas you have.
                     </h3>
-                    <button className={styles.actionBtn}>Join now.</button>
+                    <button className={styles.actionBtn}>
+                        <Link to={"/signup"}>Join now.</Link>
+                    </button>
                 </div>
                 <div className={styles.right}>
                     <img

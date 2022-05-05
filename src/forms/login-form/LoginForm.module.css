@@ -1,0 +1,54 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 3rem;
+    border-radius: 2rem;
+    background-image: radial-gradient(#114e85, #081543);
+    color: white;
+}
+
+.formControl {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.formLabel {
+    margin-bottom: 1rem;
+}
+
+.formField {
+    outline: none;
+    padding: 0.4rem 1rem;
+    background-color: transparent;
+    border-radius: 2rem;
+    border: 1.5px solid white;
+    color: inherit;
+    margin-bottom: 0.5rem;
+}
+
+.formError {
+    color: red;
+    font-size: 0.8rem;
+}
+
+.submitBtn {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    background-color: #089c70;
+    border: 2px solid white;
+    color: inherit;
+}
+
+.submitBtn:disabled {
+    border-color: grey;
+    color: grey;
+    background-color: #05563e;
+}
+
+.helperLink {
+    margin-bottom: 0.5rem;
+}

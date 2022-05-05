@@ -3,9 +3,12 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: #fcfcfc;
 }
 
 .pageContent {
     flex: 1;
     width: 90vw;
+    display: flex;
+    align-items: center;
 }
