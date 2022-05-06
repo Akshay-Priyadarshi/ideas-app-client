@@ -7,11 +7,13 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "./store";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import axios from "axios";
+import { successInterceptor } from "./helpers/success.helper";
+import { errorInterceptor } from "./helpers/error.helper";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
-console.log(process.env.NODE_ENV);
 root.render(
     <React.StrictMode>
         <ReduxProvider store={store}>
@@ -21,6 +23,14 @@ root.render(
         </ReduxProvider>
     </React.StrictMode>
 );
+
+// Environment specific configurations
+if (process.env.NODE_ENV && process.env.NODE_ENV === "development") {
+    axios.defaults.baseURL = "http://localhost:8080/api";
+} else {
+    axios.defaults.baseURL = "https://ideas-iq.herokuapp.com/api";
+}
+axios.interceptors.response.use(successInterceptor, errorInterceptor);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

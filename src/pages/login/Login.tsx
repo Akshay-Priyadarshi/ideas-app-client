@@ -1,5 +1,3 @@
-import React from "react";
-import Counter from "../../components/counter/Counter";
 import PageLayout from "../../components/page-layout/PageLayout";
 import LoginForm from "../../forms/login-form/LoginForm";
 import loginImg from "../../assets/login-img.svg";
