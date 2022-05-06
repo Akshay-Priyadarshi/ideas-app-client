@@ -3,7 +3,7 @@ import {
     IServerSuccessResponse,
     ServerResponse,
     ServerSuccessResponse,
-} from "../customs/types";
+} from "../customs/server";
 
 export function successInterceptor(res: AxiosResponse): ServerSuccessResponse {
     const serverResponse = new ServerResponse(res.data);

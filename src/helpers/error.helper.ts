@@ -3,7 +3,7 @@ import {
     ServerErrorResponse,
     ServerResponse,
     IServerErrorResponse,
-} from "../customs/types";
+} from "../customs/server";
 
 export function errorInterceptor(err: any): ServerErrorResponse[] | any {
     if (axios.isAxiosError(err)) {

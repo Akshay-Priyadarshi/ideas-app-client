@@ -1,16 +1,21 @@
 import { Form, Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import styles from "./LoginForm.module.css";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
     ServerErrorResponse,
     ServerSuccessResponse,
-} from "../../customs/types";
-import { toast, Toaster } from "react-hot-toast";
+} from "../../customs/server";
+import { Toaster } from "react-hot-toast";
 import { errorToast, successToast } from "../../helpers/toast.helper";
+import useAuth from "../../hooks/useAuth";
+import { LoginResponse } from "../../customs/login";
 
 const LoginForm = () => {
+    const { loginUser } = useAuth();
+    const navigate = useNavigate();
+
     const handleLogin = async (email: string, password: string) => {
         const res = await axios.post("/auth/login", {
             email,
@@ -18,6 +23,8 @@ const LoginForm = () => {
         });
         if (res instanceof ServerSuccessResponse) {
             successToast(res.message as string);
+            loginUser(res.data as LoginResponse);
+            navigate("/dashboard");
         }
         if (Array.isArray(res)) {
             res.map((err: ServerErrorResponse) => {

@@ -2,6 +2,7 @@ import PageLayout from "../../components/page-layout/PageLayout";
 import LoginForm from "../../forms/login-form/LoginForm";
 import loginImg from "../../assets/login-img.svg";
 import styles from "./Login.module.css";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
     return (

@@ -4,12 +4,13 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
-import { store } from "./store";
+import { store, persistor } from "./store";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import axios from "axios";
 import { successInterceptor } from "./helpers/success.helper";
 import { errorInterceptor } from "./helpers/error.helper";
+import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -17,9 +18,11 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <ReduxProvider store={store}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
+            <PersistGate persistor={persistor}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </PersistGate>
         </ReduxProvider>
     </React.StrictMode>
 );
