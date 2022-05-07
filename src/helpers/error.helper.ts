@@ -3,9 +3,14 @@ import {
     ServerErrorResponse,
     ServerResponse,
     IServerErrorResponse,
+    ServerSuccessResponse,
 } from "../customs/server";
+import { AxiosMutationSucccessFn } from "../hooks/useAxiosMutation";
+import { errorToast, successToast } from "./toast.helper";
 
-export function errorInterceptor(err: any): ServerErrorResponse[] | any {
+export function errorInterceptor(
+    err: any
+): Promise<ServerErrorResponse[] | any> {
     if (axios.isAxiosError(err)) {
         if (err.response) {
             const serverResponse = err.response.data as ServerResponse;
@@ -21,9 +26,14 @@ export function errorInterceptor(err: any): ServerErrorResponse[] | any {
                     )
                 );
             }
-            return serverErrors;
+            return Promise.reject(serverErrors);
         }
-    } else {
-        return err;
     }
+    return Promise.reject(err);
 }
+
+export const errorMessagesHandler = (errors: ServerErrorResponse[]) => {
+    errors.forEach((e) => {
+        errorToast(e.msg);
+    });
+};

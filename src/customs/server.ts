@@ -46,7 +46,7 @@ export interface IServerErrorResponse {
     path?: string;
 }
 
-export class ServerErrorResponse extends Error {
+export class ServerErrorResponse {
     msg: string;
     name: string;
     statusCode: number;
@@ -56,7 +56,6 @@ export class ServerErrorResponse extends Error {
     path?: string;
 
     constructor(_: IServerErrorResponse) {
-        super(_.msg);
         this.name = _.name;
         this.msg = _.msg;
         this.statusCode = _.statusCode;

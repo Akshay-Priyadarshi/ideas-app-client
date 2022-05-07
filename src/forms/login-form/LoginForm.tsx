@@ -3,37 +3,35 @@ import styles from "./LoginForm.module.css";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-    ServerErrorResponse,
-    ServerSuccessResponse,
-} from "../../customs/server";
+import { ServerSuccessResponse } from "../../customs/server";
 import { Toaster } from "react-hot-toast";
-import { errorToast, successToast } from "../../helpers/toast.helper";
 import useAuth from "../../hooks/useAuth";
+import useAxiosMutation from "../../hooks/useAxiosMutation";
+import { successToast } from "../../helpers/toast.helper";
 import { LoginResponse } from "../../customs/response";
+import { errorMessagesHandler } from "../../helpers/error.helper";
 
 const LoginForm = () => {
     const { loginUser } = useAuth();
     const navigate = useNavigate();
 
+    const { mutate } = useAxiosMutation<
+        { email: string; password: string },
+        ServerSuccessResponse
+    >(
+        (body: { email: string; password: string }) =>
+            axios.post("/auth/login", body),
+        (res) => {
+            res.message && successToast(res.message);
+        },
+        (err) => {
+            if (Array.isArray(err)) errorMessagesHandler(err);
+            else console.log(err);
+        }
+    );
+
     const handleLogin = async (email: string, password: string) => {
-        const res = await axios.post("/auth/login", {
-            email,
-            password,
-        });
-        if (res instanceof ServerSuccessResponse) {
-            successToast(res.message as string);
-            loginUser({
-                accessToken: res.data.token,
-                loggedInUserId: res.data.loggedInUserId,
-            } as LoginResponse);
-            navigate("/dashboard");
-        }
-        if (Array.isArray(res)) {
-            res.forEach((err: ServerErrorResponse) => {
-                errorToast(err.msg);
-            });
-        }
+        mutate({ email, password });
     };
 
     const loginSchema = Yup.object().shape({
