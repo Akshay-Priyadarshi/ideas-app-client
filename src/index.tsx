@@ -11,6 +11,9 @@ import axios from "axios";
 import { successInterceptor } from "./helpers/success.helper";
 import { errorInterceptor } from "./helpers/error.helper";
 import { PersistGate } from "redux-persist/integration/react";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -20,7 +23,9 @@ root.render(
         <ReduxProvider store={store}>
             <PersistGate persistor={persistor}>
                 <BrowserRouter>
-                    <App />
+                    <QueryClientProvider client={queryClient}>
+                        <App />
+                    </QueryClientProvider>
                 </BrowserRouter>
             </PersistGate>
         </ReduxProvider>

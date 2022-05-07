@@ -1,9 +1,11 @@
 import React from "react";
+import Dp from "../dp/Dp";
+import styles from "./FeedIdea.module.css";
 
 const FeedIdea = () => {
     return (
-        <div>
-            <h3>Feed Idea</h3>
+        <div className={styles.feedIdea}>
+            <Dp dpLink={""} />
         </div>
     );
 };

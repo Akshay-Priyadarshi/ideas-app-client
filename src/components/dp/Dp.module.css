@@ -1,0 +1,13 @@
+.dpBg {
+    width: 2rem;
+    height: 2rem;
+    background-color: #d6dce8;
+    overflow: hidden;
+    border-radius: 2rem;
+    margin-right: 0.5rem;
+}
+
+.dp {
+    max-width: 100%;
+    object-fit: contain;
+}

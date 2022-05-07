@@ -23,7 +23,10 @@ const LoginForm = () => {
         });
         if (res instanceof ServerSuccessResponse) {
             successToast(res.message as string);
-            loginUser(res.data as LoginResponse);
+            loginUser({
+                accessToken: res.data.token,
+                loggedInUserId: res.data.loggedInUserId,
+            } as LoginResponse);
             navigate("/dashboard");
         }
         if (Array.isArray(res)) {

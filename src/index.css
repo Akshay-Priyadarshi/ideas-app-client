@@ -4,13 +4,7 @@ body {
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none;
     font-size: 16px;
-}
-
-body::-webkit-scrollbar {
-    display: none;
 }
 
 code {
@@ -22,6 +16,13 @@ code {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+    display: none;
 }
 
 a {

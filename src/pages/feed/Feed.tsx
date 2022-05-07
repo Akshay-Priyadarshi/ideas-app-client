@@ -6,6 +6,10 @@ const Feed = () => {
     return (
         <div className={styles.feeds}>
             <FeedIdea />
+            <FeedIdea />
+            <FeedIdea />
+            <FeedIdea />
+            <FeedIdea />
         </div>
     );
 };

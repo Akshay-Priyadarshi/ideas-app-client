@@ -1,0 +1,7 @@
+.feeds {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 4rem 8rem;
+    grid-auto-rows: 1fr;
+    justify-items: end;
+}
