@@ -3,10 +3,8 @@ import {
     ServerErrorResponse,
     ServerResponse,
     IServerErrorResponse,
-    ServerSuccessResponse,
 } from "../customs/server";
-import { AxiosMutationSucccessFn } from "../hooks/useAxiosMutation";
-import { errorToast, successToast } from "./toast.helper";
+import { errorToast } from "./toast.helper";
 
 export function errorInterceptor(
     err: any

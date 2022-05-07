@@ -11,6 +11,7 @@
         "noFallthroughCasesInSwitch": true,
         "module": "esnext",
         "strictPropertyInitialization": false,
+        "noUnusedLocals": true,
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": true,

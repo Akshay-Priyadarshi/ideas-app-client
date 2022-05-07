@@ -23,6 +23,11 @@ const LoginForm = () => {
             axios.post("/auth/login", body),
         (res) => {
             res.message && successToast(res.message);
+            loginUser({
+                accessToken: res.data.token,
+                loggedInUserId: res.data.loggedInUserId,
+            } as LoginResponse);
+            navigate("/dashboard");
         },
         (err) => {
             if (Array.isArray(err)) errorMessagesHandler(err);

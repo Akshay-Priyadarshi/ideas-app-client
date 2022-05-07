@@ -1,31 +1,35 @@
-import React from "react";
 import styles from "./SignupForm.module.css";
 import * as Yup from "yup";
 import { useFormik, FormikProvider, Field, ErrorMessage, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-    ServerErrorResponse,
-    ServerSuccessResponse,
-} from "../../customs/server";
-import { errorToast, successToast } from "../../helpers/toast.helper";
+import { ServerSuccessResponse } from "../../customs/server";
 import { Toaster } from "react-hot-toast";
+import useAxiosMutation from "../../hooks/useAxiosMutation";
+import { errorMessagesHandler } from "../../helpers/error.helper";
+import { successMessagesHandler } from "../../helpers/success.helper";
 
 const SignupForm = () => {
     const navigate = useNavigate();
 
-    const handleSignup = async (email: string, password: string) => {
-        const res = await axios.post("/auth/signup", { email, password });
-        console.log(res);
-        if (res instanceof ServerSuccessResponse) {
-            successToast(res.message as string);
+    const { mutate } = useAxiosMutation<
+        { email: string; password: string },
+        ServerSuccessResponse
+    >(
+        (body: { email: string; password: string }) =>
+            axios.post("/auth/signup", body),
+        (res) => {
+            res.message && successMessagesHandler(res.message);
             navigate("/login");
+        },
+        (err) => {
+            if (Array.isArray(err)) errorMessagesHandler(err);
+            else console.log(err);
         }
-        if (Array.isArray(res)) {
-            res.forEach((err: ServerErrorResponse) => {
-                errorToast(err.msg);
-            });
-        }
+    );
+
+    const handleSignup = async (email: string, password: string) => {
+        mutate({ email, password });
     };
 
     const signupSchema = Yup.object().shape({

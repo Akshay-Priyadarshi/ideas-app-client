@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppDispatch } from "./useAppDispatch";
 import { useAppSelector } from "./useAppSelector";
 import { logout, login } from "../store/slices/auth.slice";

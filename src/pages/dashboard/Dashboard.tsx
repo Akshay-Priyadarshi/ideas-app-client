@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Dashboard.module.css";
 import logo from "../../assets/logo/long-logo.svg";
 import { Outlet } from "react-router-dom";
@@ -12,13 +11,9 @@ import IconLink from "../../components/icon-link/IconLink";
 import useAuth from "../../hooks/useAuth";
 import Dp from "../../components/dp/Dp";
 import { HiChevronDoubleDown } from "react-icons/hi";
-import useLoggedInUser from "../../hooks/useLoggedInUser";
 
 const Dashboard = () => {
-    const { logoutUser, loginData } = useAuth();
-    const { loggedInUser } = useLoggedInUser(
-        loginData?.loggedInUserId as string
-    );
+    const { logoutUser } = useAuth();
 
     return (
         <div className={styles.dashboard}>

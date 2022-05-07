@@ -1,5 +1,3 @@
-import React from "react";
-import styles from "./NotFound.module.css";
 import PageLayout from "../../components/page-layout/PageLayout";
 
 const NotFound = () => {

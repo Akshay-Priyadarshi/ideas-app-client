@@ -1,4 +1,3 @@
-import React from "react";
 import PageLayout from "../../components/page-layout/PageLayout";
 import SignupForm from "../../forms/signup-form/SignupForm";
 import styles from "./Signup.module.css";

@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, HTMLProps, ReactChild, useState } from "react";
+import React, { ReactChild } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import styles from "./IconLink.module.css";
 

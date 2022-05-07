@@ -1,5 +1,3 @@
-import axios from "axios";
-import React from "react";
 import { MutationFunction, useMutation } from "react-query";
 
 export type AxiosMutationSucccessFn<
