@@ -27,7 +27,7 @@ const LoginForm = () => {
             navigate("/dashboard");
         }
         if (Array.isArray(res)) {
-            res.map((err: ServerErrorResponse) => {
+            res.forEach((err: ServerErrorResponse) => {
                 errorToast(err.msg);
             });
         }
@@ -48,7 +48,6 @@ const LoginForm = () => {
         validationSchema: loginSchema,
         onSubmit: (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            console.log(values);
             handleLogin(values.email, values.password);
             resetForm();
             setSubmitting(false);
