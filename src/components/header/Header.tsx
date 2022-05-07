@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import cn from "classnames";
-import logo from "../../assets/logo/logo-svg.svg";
+import logo from "../../assets/logo/long-logo.svg";
 import { HiMenuAlt3 as MenuIcon } from "react-icons/hi";
 import useAuth from "../../hooks/useAuth";
 

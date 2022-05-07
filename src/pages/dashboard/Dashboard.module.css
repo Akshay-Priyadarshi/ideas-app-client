@@ -1,0 +1,35 @@
+.dashboard {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+.left {
+    width: 20%;
+    height: 100%;
+    background-color: #181d1c;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+.logo {
+    width: 8rem;
+    margin-bottom: 2rem;
+}
+
+.navLink {
+    margin-bottom: 1rem;
+}
+
+.right {
+    width: 80%;
+    height: 100%;
+    background-color: #83abfa;
+}
+
+.rightHeader {
+    padding: 2rem;
+    background-image: linear-gradient(to bottom, #114e85, #83abfa);
+    display: flex;
+    justify-content: flex-end;
+}

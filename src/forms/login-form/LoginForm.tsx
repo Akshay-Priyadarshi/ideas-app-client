@@ -10,7 +10,7 @@ import {
 import { Toaster } from "react-hot-toast";
 import { errorToast, successToast } from "../../helpers/toast.helper";
 import useAuth from "../../hooks/useAuth";
-import { LoginResponse } from "../../customs/login";
+import { LoginResponse } from "../../customs/response";
 
 const LoginForm = () => {
     const { loginUser } = useAuth();

@@ -3,9 +3,12 @@ import Home from "./pages/home/Home";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Authenticated from "./components/authenticated/Authenticated";
 import OnlyUnauthenticated from "./components/only-unauthenticated/OnlyUnauthenticated";
+import Feed from "./pages/feed/Feed";
+import Favourite from "./pages/favourite/Favourite";
+import NotFound from "./pages/not-found/NotFound";
 
 function App() {
     return (
@@ -34,7 +37,11 @@ function App() {
                         <Dashboard />
                     </Authenticated>
                 }
-            />
+            >
+                <Route index element={<Feed />} />
+                <Route path="favourite" element={<Favourite />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }
