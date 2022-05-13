@@ -11,9 +11,12 @@ import IconLink from "../../components/icon-link/IconLink";
 import useAuth from "../../hooks/useAuth";
 import Dp from "../../components/dp/Dp";
 import { HiChevronDoubleDown } from "react-icons/hi";
+import useLoggedInUser from "../../hooks/useLoggedInUser";
+import DisplayName from "../../components/display-name/DisplayName";
 
 const Dashboard = () => {
-    const { logoutUser } = useAuth();
+    const { logoutUser, loginData } = useAuth();
+    const { loggedInUser } = useLoggedInUser(loginData?.loggedInUserId);
 
     return (
         <div className={styles.dashboard}>
@@ -44,8 +47,10 @@ const Dashboard = () => {
             <section className={styles.right}>
                 <section className={styles.rightHeader}>
                     <div className={styles.profilePill}>
-                        <Dp dpLink={""} />
-                        <p className={styles.name}>{"Akshay"}</p>
+                        <Dp profile={loggedInUser?.profile} />
+                        <p className={styles.name}>
+                            <DisplayName profile={loggedInUser?.profile} />
+                        </p>
                         <span className={styles.iconContainer}>
                             <HiChevronDoubleDown className={styles.icon} />
                         </span>

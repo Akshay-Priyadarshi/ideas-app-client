@@ -1,14 +1,24 @@
 import React from "react";
 import styles from "./Dp.module.css";
+import { MdAccountCircle } from "react-icons/md";
+import { Profile } from "../../customs/profile";
 
 interface IDpProps {
-    dpLink: string;
+    profile: Profile | null | undefined;
 }
 
-const Dp: React.FC<IDpProps> = ({ dpLink }) => {
+const Dp: React.FC<IDpProps> = ({ profile }) => {
     return (
         <div className={styles.dpBg}>
-            <img className={styles.dp} src={dpLink} alt="Display Pic" />
+            {profile ? (
+                <img
+                    className={styles.dp}
+                    src={profile.avatarUrl}
+                    alt="Display Pic"
+                />
+            ) : (
+                <MdAccountCircle className={styles.unknownDp} />
+            )}
         </div>
     );
 };
