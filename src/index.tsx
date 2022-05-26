@@ -12,18 +12,25 @@ import { successInterceptor } from "./helpers/success.helper";
 import { errorInterceptor } from "./helpers/error.helper";
 import { PersistGate } from "redux-persist/integration/react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient();
+
+const NODE_ENV = process.env.NODE_ENV;
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
+
 root.render(
     <React.StrictMode>
         <ReduxProvider store={store}>
             <PersistGate persistor={persistor}>
                 <BrowserRouter>
                     <QueryClientProvider client={queryClient}>
+                        {NODE_ENV === "development" ? (
+                            <ReactQueryDevtools initialIsOpen={false} />
+                        ) : null}
                         <App />
                     </QueryClientProvider>
                 </BrowserRouter>
@@ -33,7 +40,7 @@ root.render(
 );
 
 // Environment specific configurations
-if (process.env.NODE_ENV && process.env.NODE_ENV === "development") {
+if (NODE_ENV && NODE_ENV === "development") {
     axios.defaults.baseURL = "http://localhost:8080/api";
 } else {
     axios.defaults.baseURL = "https://ideas-iq.herokuapp.com/api";

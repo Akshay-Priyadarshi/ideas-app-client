@@ -22,11 +22,8 @@ const IconLink: React.FC<IIconLinkProps> = ({
     return (
         <Link to={link}>
             <div className={styles.navLink}>
-                <span className={styles.navIcon} hidden={match !== null}>
-                    {icon}
-                </span>
-                <span className={styles.navIcon} hidden={match === null}>
-                    {activeIcon}
+                <span className={styles.navIcon}>
+                    {match !== null ? activeIcon : icon}
                 </span>
                 <p>{text}</p>
             </div>

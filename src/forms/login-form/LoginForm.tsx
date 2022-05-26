@@ -2,26 +2,26 @@ import { Form, Field, ErrorMessage, useFormik, FormikProvider } from "formik";
 import styles from "./LoginForm.module.css";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ServerSuccessResponse } from "../../customs/server";
 import { Toaster } from "react-hot-toast";
+import { useMutation } from "react-query";
 import useAuth from "../../hooks/useAuth";
-import useAxiosMutation from "../../hooks/useAxiosMutation";
 import { successToast } from "../../helpers/toast.helper";
 import { LoginResponse } from "../../customs/response";
 import { errorMessagesHandler } from "../../helpers/error.helper";
+import { loginApi, LoginVariable } from "../../api/auth.api";
 
 const LoginForm = () => {
     const { loginUser } = useAuth();
     const navigate = useNavigate();
 
-    const { mutate } = useAxiosMutation<
-        { email: string; password: string },
-        ServerSuccessResponse
-    >(
-        (body: { email: string; password: string }) =>
-            axios.post("/auth/login", body),
-        (res) => {
+    const { mutate } = useMutation<
+        ServerSuccessResponse,
+        unknown,
+        LoginVariable
+    >("login", {
+        mutationFn: loginApi,
+        onSuccess: (res) => {
             res.message && successToast(res.message);
             loginUser({
                 accessToken: res.data.token,
@@ -29,11 +29,11 @@ const LoginForm = () => {
             } as LoginResponse);
             navigate("/dashboard");
         },
-        (err) => {
+        onError: (err) => {
             if (Array.isArray(err)) errorMessagesHandler(err);
             else console.log(err);
-        }
-    );
+        },
+    });
 
     const handleLogin = async (email: string, password: string) => {
         mutate({ email, password });

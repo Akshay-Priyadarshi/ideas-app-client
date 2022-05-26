@@ -2,31 +2,31 @@ import styles from "./SignupForm.module.css";
 import * as Yup from "yup";
 import { useFormik, FormikProvider, Field, ErrorMessage, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ServerSuccessResponse } from "../../customs/server";
 import { Toaster } from "react-hot-toast";
-import useAxiosMutation from "../../hooks/useAxiosMutation";
+import { useMutation } from "react-query";
 import { errorMessagesHandler } from "../../helpers/error.helper";
 import { successMessagesHandler } from "../../helpers/success.helper";
+import { signupApi, SignupVariable } from "../../api/auth.api";
 
 const SignupForm = () => {
     const navigate = useNavigate();
 
-    const { mutate } = useAxiosMutation<
-        { email: string; password: string },
-        ServerSuccessResponse
-    >(
-        (body: { email: string; password: string }) =>
-            axios.post("/auth/signup", body),
-        (res) => {
+    const { mutate } = useMutation<
+        ServerSuccessResponse,
+        unknown,
+        SignupVariable
+    >("signup", {
+        mutationFn: signupApi,
+        onSuccess: (res) => {
             res.message && successMessagesHandler(res.message);
             navigate("/login");
         },
-        (err) => {
+        onError: (err) => {
             if (Array.isArray(err)) errorMessagesHandler(err);
             else console.log(err);
-        }
-    );
+        },
+    });
 
     const handleSignup = async (email: string, password: string) => {
         mutate({ email, password });

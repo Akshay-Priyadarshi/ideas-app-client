@@ -1,4 +1,4 @@
-import { IProfile, Profile } from "./profile";
+import { IProfile, Profile } from "./profile.model";
 
 export enum UserRole {
     ADMIN = "ADMIN",

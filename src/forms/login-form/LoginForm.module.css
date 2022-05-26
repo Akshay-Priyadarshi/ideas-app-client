@@ -41,6 +41,7 @@
     background-color: #089c70;
     border: 2px solid white;
     color: inherit;
+    cursor: pointer;
 }
 
 .submitBtn:disabled {

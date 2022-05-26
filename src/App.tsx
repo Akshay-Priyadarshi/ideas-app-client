@@ -8,6 +8,9 @@ import OnlyUnauthenticated from "./components/only-unauthenticated/OnlyUnauthent
 import Feed from "./pages/feed/Feed";
 import Favourite from "./pages/favourite/Favourite";
 import NotFound from "./pages/not-found/NotFound";
+import Search from "./pages/search/Search";
+import CreateIdea from "./pages/create-idea/CreateIdea";
+import IdeaDetails from "./pages/idea-details/IdeaDetails";
 
 function App() {
     return (
@@ -39,6 +42,9 @@ function App() {
             >
                 <Route index element={<Feed />} />
                 <Route path="favourite" element={<Favourite />} />
+                <Route path="search" element={<Search />} />
+                <Route path="create" element={<CreateIdea />} />
+                <Route path="idea/:id" element={<IdeaDetails />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>

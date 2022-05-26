@@ -3,6 +3,7 @@ export interface IProfile {
         first: string;
         middle?: string;
         last: string;
+        full: string;
     };
     dob: {
         year?: number;
@@ -18,6 +19,7 @@ export class Profile {
     name: {
         first: string;
         middle?: string;
+        full: string;
         last: string;
     } | null;
     dob: {

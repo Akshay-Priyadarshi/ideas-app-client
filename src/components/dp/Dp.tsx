@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Dp.module.css";
 import { MdAccountCircle } from "react-icons/md";
-import { Profile } from "../../customs/profile";
+import { Profile } from "../../models/profile.model";
 
 interface IDpProps {
     profile: Profile | null | undefined;

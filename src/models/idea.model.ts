@@ -1,4 +1,4 @@
-import { IUser, User } from "./user";
+import { IUser, User } from "./user.model";
 
 export interface IIdea {
     _id: string;

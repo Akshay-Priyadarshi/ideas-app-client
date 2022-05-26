@@ -1,17 +1,15 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import styles from "./PageLayout.module.css";
-import { IChildren } from "../../customs/types";
 import Header from "../header/Header";
+import { IChildren } from "../../customs/types";
 
-export interface IPageLayoutProps extends IChildren {}
+export interface IProps extends IChildren {}
 
-const PageLayout: React.FunctionComponent<IPageLayoutProps> = ({
-    children,
-}) => {
+const PageLayout: FunctionComponent<IProps> = (props) => {
     return (
         <div className={styles.pageLayout}>
             <Header />
-            <div className={styles.pageContent}>{children}</div>
+            <div className={styles.pageContent}>{props.children}</div>
         </div>
     );
 };

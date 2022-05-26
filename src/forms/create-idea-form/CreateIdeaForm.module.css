@@ -1,4 +1,4 @@
-.signupForm {
+.createIdeaForm {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -22,10 +22,16 @@
     outline: none;
     padding: 0.4rem 1rem;
     background-color: transparent;
-    border-radius: 2rem;
+    border-radius: 10px;
     border: 1.5px solid white;
     color: inherit;
     margin-bottom: 0.5rem;
+}
+
+.desc {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 10vh;
 }
 
 .formError {
@@ -48,8 +54,4 @@
     border-color: grey;
     color: grey;
     background-color: #05563e;
-}
-
-.helperLink {
-    margin-bottom: 0.5rem;
 }
