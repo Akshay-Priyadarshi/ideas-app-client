@@ -10,6 +10,7 @@ import { successToast } from "../../helpers/toast.helper";
 import { LoginResponse } from "../../customs/response";
 import { errorMessagesHandler } from "../../helpers/error.helper";
 import { loginApi, LoginVariable } from "../../api/auth.api";
+import PasswordField from "../../components/password-field/PasswordField";
 
 const LoginForm = () => {
     const { loginUser } = useAuth();
@@ -30,6 +31,7 @@ const LoginForm = () => {
             navigate("/dashboard");
         },
         onError: (err) => {
+            console.log(err);
             if (Array.isArray(err)) errorMessagesHandler(err);
             else console.log(err);
         },
@@ -90,13 +92,15 @@ const LoginForm = () => {
                         <label className={styles.formLabel} htmlFor="password">
                             Password
                         </label>
-                        <Field
+                        <PasswordField
                             className={styles.formField}
-                            type="password"
-                            name="password"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.password}
+                            inputFieldProps={{
+                                type: "password",
+                                name: "password",
+                                onChange: formik.handleChange,
+                                onBlur: formik.handleBlur,
+                                value: formik.values.password,
+                            }}
                         />
                         <ErrorMessage
                             name="password"

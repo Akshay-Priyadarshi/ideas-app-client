@@ -11,11 +11,13 @@ import IconLink from "../../components/icon-link/IconLink";
 import useAuth from "../../hooks/useAuth";
 import Dp from "../../components/dp/Dp";
 import { HiChevronDoubleDown } from "react-icons/hi";
+import { FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import useLoggedInUser from "../../hooks/useLoggedInUser";
 import DisplayName from "../../components/display-name/DisplayName";
 import { MdCreate, MdOutlineCreate } from "react-icons/md";
 import { Toaster } from "react-hot-toast";
+import Tippy from "@tippyjs/react";
 
 const Dashboard = () => {
     const { logoutUser, loginData } = useAuth();
@@ -71,6 +73,23 @@ const Dashboard = () => {
                         <p className={styles.name}>
                             <DisplayName profile={loggedInUser?.profile} />
                         </p>
+                        {loggedInUser?.verified ? (
+                            <Tippy content="Verified">
+                                <div>
+                                    <FaRegCheckCircle
+                                        className={styles.verifyIcon}
+                                    />
+                                </div>
+                            </Tippy>
+                        ) : (
+                            <Tippy content="Unverified">
+                                <div>
+                                    <FaRegCircle
+                                        className={styles.verifyIcon}
+                                    />
+                                </div>
+                            </Tippy>
+                        )}
                         <span className={styles.iconContainer}>
                             <HiChevronDoubleDown className={styles.icon} />
                         </span>

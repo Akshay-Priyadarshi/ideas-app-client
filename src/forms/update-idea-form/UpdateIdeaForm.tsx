@@ -1,33 +1,59 @@
-import styles from "./CreateIdeaForm.module.css";
-import * as Yup from "yup";
+import classNames from "classnames";
 import { ErrorMessage, Field, Form, FormikProvider, useFormik } from "formik";
 import { Toaster } from "react-hot-toast";
-import { toTitleCase } from "../../helpers/string.helper";
-import classNames from "classnames";
-import { useMutation, useQueryClient } from "react-query";
-import { ServerSuccessResponse } from "../../customs/server";
+import { useQueryClient, useMutation, useQuery, QueryKey } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { createApi } from "../../api/crud.api";
-import { successMessagesHandler } from "../../helpers/success.helper";
-import { CreateVariable } from "../../api/helpers";
+import * as Yup from "yup";
+import { getByIdApi, updateApi } from "../../api/crud.api";
+import { GetByIdVariable, UpdateVariable } from "../../api/helpers";
+import { ServerSuccessResponse } from "../../customs/server";
 import { errorMessagesHandler } from "../../helpers/error.helper";
+import { toTitleCase } from "../../helpers/string.helper";
+import { successMessagesHandler } from "../../helpers/success.helper";
 import useAuth from "../../hooks/useAuth";
+import styles from "./UpdateIdeaForm.module.css";
 
-const CreateIdeaForm = () => {
+interface Props {
+    ideaId: string;
+}
+
+const UpdateIdeaForm: React.FC<Props> = ({ ideaId }) => {
     const queryClient = useQueryClient();
     const navigate = useNavigate();
 
     const { loginData } = useAuth();
 
-    const createIdeaMutation = useMutation<
+    const updateIdeaSchema = Yup.object().shape({
+        title: Yup.string().max(100).min(3).required().trim(),
+        description: Yup.string().max(1000).min(100).required().trim(),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            title: "",
+            description: "",
+        },
+        validationSchema: updateIdeaSchema,
+        onSubmit: (values, {}) => {
+            updateIdeaMutation.mutate({
+                update: {
+                    title: values.title,
+                    desc: values.description,
+                },
+                id: ideaId as string,
+                accessToken: loginData?.accessToken as string,
+            });
+        },
+    });
+
+    const updateIdeaMutation = useMutation<
         ServerSuccessResponse,
         unknown,
-        CreateVariable<{ title: string; desc: string; ideator: string }>
-    >("createIdea", {
-        mutationFn: createApi<{
+        UpdateVariable<{ title: string; desc: string }>
+    >("updateIdea", {
+        mutationFn: updateApi<{
             title: string;
             desc: string;
-            ideator: string;
         }>("/ideas"),
         onSuccess: (res) => {
             res.message && successMessagesHandler(res.message);
@@ -40,26 +66,24 @@ const CreateIdeaForm = () => {
         },
     });
 
-    const createIdeaSchema = Yup.object().shape({
-        title: Yup.string().max(100).min(3).required().trim(),
-        description: Yup.string().max(1000).min(100).required().trim(),
-    });
-
-    const formik = useFormik({
-        initialValues: {
-            title: "",
-            description: "",
-        },
-        validationSchema: createIdeaSchema,
-        onSubmit: (values, {}) => {
-            createIdeaMutation.mutate({
-                create: {
-                    title: values.title,
-                    desc: values.description,
-                    ideator: loginData?.loggedInUserId as string,
-                },
+    const {} = useQuery<
+        ServerSuccessResponse,
+        unknown,
+        ServerSuccessResponse,
+        [QueryKey, GetByIdVariable]
+    >({
+        queryKey: [
+            "getIdea",
+            {
+                id: ideaId as string,
                 accessToken: loginData?.accessToken as string,
-            });
+            },
+        ],
+        queryFn: getByIdApi("/ideas"),
+        onSuccess: (res) => {
+            console.log(res.data);
+            formik.values.title = toTitleCase(res.data.title);
+            formik.values.description = toTitleCase(res.data.desc);
         },
     });
 
@@ -99,6 +123,7 @@ const CreateIdeaForm = () => {
                             Description
                         </label>
                         <textarea
+                            style={{ fontFamily: "inherit" }}
                             className={classNames(
                                 styles.formField,
                                 styles.desc
@@ -122,7 +147,7 @@ const CreateIdeaForm = () => {
                         type="submit"
                         disabled={formik.isSubmitting || !formik.isValid}
                     >
-                        Post Idea
+                        Update Idea
                     </button>
                 </Form>
             </FormikProvider>
@@ -131,4 +156,4 @@ const CreateIdeaForm = () => {
     );
 };
 
-export default CreateIdeaForm;
+export default UpdateIdeaForm;

@@ -161,16 +161,20 @@ const FeedIdea: React.FC<FeedIdeaProps> = ({ idea }) => {
                                     />
                                 </button>
                             </Tippy>
-                            <Tippy content="Update Idea" duration={200}>
-                                <button className={styles.quickActionButton}>
-                                    <MdUpdate
-                                        className={classNames(
-                                            styles.quickActionButtonIcon,
-                                            styles.deleteIcon
-                                        )}
-                                    />
-                                </button>
-                            </Tippy>
+                            <Link to={`/dashboard/update/${idea.id}`}>
+                                <Tippy content="Update Idea" duration={200}>
+                                    <button
+                                        className={styles.quickActionButton}
+                                    >
+                                        <MdUpdate
+                                            className={classNames(
+                                                styles.quickActionButtonIcon,
+                                                styles.deleteIcon
+                                            )}
+                                        />
+                                    </button>
+                                </Tippy>
+                            </Link>
                         </>
                     ) : null}
                     <Tippy content="More" duration={200}>

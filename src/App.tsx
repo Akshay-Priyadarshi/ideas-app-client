@@ -11,6 +11,7 @@ import NotFound from "./pages/not-found/NotFound";
 import Search from "./pages/search/Search";
 import CreateIdea from "./pages/create-idea/CreateIdea";
 import IdeaDetails from "./pages/idea-details/IdeaDetails";
+import UpdateIdea from "./pages/update-idea/UpdateIdea";
 
 function App() {
     return (
@@ -44,6 +45,7 @@ function App() {
                 <Route path="favourite" element={<Favourite />} />
                 <Route path="search" element={<Search />} />
                 <Route path="create" element={<CreateIdea />} />
+                <Route path="Update/:id" element={<UpdateIdea />} />
                 <Route path="idea/:id" element={<IdeaDetails />} />
             </Route>
             <Route path="*" element={<NotFound />} />

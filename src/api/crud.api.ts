@@ -49,10 +49,10 @@ export const createApi = <T>(
         });
 };
 
-export const updateApi = (
+export const updateApi = <T>(
     BASE_URL: string
-): MF<ServerSuccessResponse, UpdateVariable> => {
-    return (v: UpdateVariable) =>
+): MF<ServerSuccessResponse, UpdateVariable<T>> => {
+    return (v: UpdateVariable<T>) =>
         axios.put(baseUrlWithId(BASE_URL, v.id), v.update, {
             headers: {
                 Authorization: v.accessToken,
